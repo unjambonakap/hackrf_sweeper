@@ -105,9 +105,9 @@ if(UNIX AND NOT APPLE)
 
 
      # Find MessagePack
-     find_package(Msgpack REQUIRED)
+     find_package(msgpack REQUIRED)
 
-     if(CZMQ_FOUND AND Msgpack_FOUND AND LZMQ_FOUND)
+     if(CZMQ_FOUND AND msgpack_FOUND AND LZMQ_FOUND)
         message(STATUS "CZeroMQ found: ${CZMQ_LIBRARIES}")
         message(STATUS "Msgpack found: ${MSGPACK_LIBRARIES}")
         message(STATUS "LibZMQ found: ${LZMQ_LIBRARIES}")
@@ -119,7 +119,7 @@ if(UNIX AND NOT APPLE)
         target_link_libraries(hackrf_sweeper_zmqpub ${TOOLS_LINK_LIBS} ${CZMQ_LIBRARIES} ${LZMQ_LIBRARIES} hackrf_sweeper pthread)
         install(TARGETS hackrf_sweeper_zmqpub RUNTIME DESTINATION ${INSTALL_DEFAULT_BINDIR})
     else()
-        message(WARNING "ZeroMQ not found. hackrf_sweeper_zmqpub will not be built.")
+        message(WARNING "hackrf_sweeper_zmqpub will not be built, missing deps.")
     endif()
 
 endif()
